@@ -1,0 +1,82 @@
+<% layout('../views/guests/layouts/boilerplate') %>
+
+
+      <div>
+            <div id="family_image">
+                  <div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white"
+                        style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); height: 200px;">
+                        <h1 class="mb-3 h2">Todd Anderson & Sarah Wald</h1>
+                  </div>
+            </div>
+            <div class="container text-center" id="family_list_div">
+                  <div id="rsvp_lettering">
+                        <h1>~ Edit Guests ~</h1>
+                        <hr>
+                        <!-- Making this a GET request makes this into a req.query and not a req.body. This 
+                  makes it so that we can search for it with a query string -->
+                        <form action="/guests" method="GET">
+                              <div id="search_form">
+                                    <input type="text" name="search1" placeholder="First Name" id="search_bar">
+                                    <input type="text" name="search2" placeholder="Last Name" id="search_bar">
+                                    <br>
+                                    <div class="no_search_buttons">
+                                          <button type="submit" value="Search" class=" btn btn-dark"
+                                                id="search_button">Search</button>
+                                          <% function noGuestss() { %>
+                                                <h5 id="no_guests_match">No guests match that search, please try
+                                                      again. </h5>
+                                                <% } %>
+                                    </div>
+                              </div>
+                        </form>
+                  </div>
+            </div>
+      </div>
+      <section class="p-1">
+            <!-- Container as usual...-->
+            <div class="container">
+                  <!-- Making a row for the three boxes -->
+                  <!-- Gap here gives it space around the boxes when in the smaller view port -->
+                  <div class="col text-center">
+                        <!-- Then passing it the three columns which will only appear on md sizes and up. Below that, they will be stacked on top of one another -->
+                        <!-- Here is the first column -->
+                        <div class="col-lg gap-2">
+                              <!-- Div for the card -->
+                              <ul>
+                                    <!-- USE Ogject.keys(objectName) for the loop! DONT get stuck on this again! -->
+                                    <% for (let guest of Object.entries(guests)) { %>
+
+                                                <a href="/guests/<%= guest[1]._id %>/guest_edit" class="row main_family_list_item">
+                                                      <div class="col">
+                                                            <li>
+                                                                  <%= guest[1].firstName %>
+                                                                        <%= guest[1].lastName %>
+                                                            </li>
+                                                      </div>
+                                                      <div class="col">
+                                                            <form action="/guests/<%=guest[1]._id%>/?_method=DELETE"
+                                                                  method="POST" class="">
+                                                                  <button class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                      </div>
+                                                </a>
+
+                                          <% }%>
+                                                <% if(guests.length < 1) { %>
+                                                      <% noGuestss() %>
+                                                            <div class="tenor-gif-embed" data-postid="5762800"
+                                                                  data-share-method="host" data-aspect-ratio="1.33155"
+                                                                  data-width="90%"><a
+                                                                        href="https://tenor.com/view/pokemon-confused-psyduck-gif-5762800">Pokemon
+                                                                        Confused GIF</a>from <a
+                                                                        href="https://tenor.com/search/pokemon-gifs">Pokemon
+                                                                        GIFs</a></div>
+                                                            <script type="text/javascript" async
+                                                                  src="https://tenor.com/embed.js"></script>
+
+                                                            <% } %>
+                              </ul>
+                        </div>
+                  </div>
+            </div>
+      </section>

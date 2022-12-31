@@ -1,0 +1,47 @@
+<% layout('../views/guests/layouts/boilerplate') %>
+
+      <body>
+            <div id="family_image">
+                  <div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white"
+                        style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); height: 200px;">
+                        <h1 class="mb-3 h2">Todd Anderson & Sarah Wald</h1>
+                  </div>
+            </div>
+            <div class="container text-center" id="family_list_div">
+                  <div id="rsvp_lettering">
+                        <h1>~ Edit Guest ~</h1>
+                        <hr>
+                  </div>
+                  <form class="family_list" action="/guests/guest_edit/<%=guest._id%>?_method=PUT" method="POST">
+                        <div class="row">
+                              <div class="col">
+                                    <label for="first_name">Guest First Name</label>
+                                    <input type="text" class="form-control" value="<%=guest.firstName %>"
+                                          id="first_name" name="guest[firstName]">
+                              </div>
+                              <div class="col">
+                                    <label for="last_name">Guest Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Last name" id="last_name"
+                                          value="<%=guest.lastName %>" name="guest[lastName]">
+                              </div>
+                              <div class="col">
+                                    <label for="family">Guest Family</label>
+                                    <input type="text" class="form-control" placeholder="Family" id="family"
+                                          value="<%=guest.family %>" name="guest[family]">
+                              </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                              <div class="col">
+                                    <div>
+                                          <label for="first_name">Guest's Song Reuest(s)</label>
+                                          <input type="text" class="form-control" value="<%=guest.song_request %>"
+                                                id="first_name" name="guest[song_request]">
+                                    </div>
+                              </div>
+                        </div>
+                        <br>
+                        <button class="btn btn-success">Update guest</button>
+                  </form>
+            </div>
+      </body>

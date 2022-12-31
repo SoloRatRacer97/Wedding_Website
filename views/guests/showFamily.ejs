@@ -1,0 +1,25 @@
+<!-- NOT USED! -->
+
+<% layout('../views/guests/layouts/boilerplate') %>
+      <div class="show_family">
+            <h1>showFamily.ejs</h1>
+      <form action="/guests/<%=guest._id %>?_method=DELETE" method="POST">
+      <button>DELTE</button>
+      </form>
+      <li><%= guest.firstName%> <%= guest.lastName%>
+            <button>Accept</button>
+            <button>Decline</button>
+      </li>
+      <% for (let familyMember of guests) { %>
+            <!-- Put in something to show if the family member has accepted the invite or not already? -->
+                  <% if(guest.family === familyMember.family && familyMember.firstName !== guest.firstName && familyMember.decision !== "accept") { %>
+                        <li><%= familyMember.firstName%> <%= familyMember.lastName%>
+                        <button>Accept</button>
+                        <button>Decline</button>
+                        </li>
+                  <% } else if (familyMember.decision === "accept") {%>
+                        <li><%= familyMember.firstName%> <%= familyMember.lastName%> *Acepted* </li>
+                        <% } %>
+      <% }%>
+      <a href="/guests/<%=guest._id%>/edit">Edit</a>
+      </div>

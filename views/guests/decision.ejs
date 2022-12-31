@@ -1,0 +1,131 @@
+<% layout('../views/guests/layouts/boilerplate') %>
+      <div>
+            <div id="family_image">
+                  <div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white"
+                        style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); height: 200px;">
+                        <h1 class="mb-3 h2">Todd Anderson & Sarah Wald</h1>
+                  </div>
+            </div>
+            <div class="text-center" id="show_family_list">
+                  <div>
+                        <h1>~ RSVP ~</h1>
+                        <hr id="family_list_hr">
+                        <h3>Confirm Attendance</h3>
+                        <br>
+                        <!-- <p>Select which guests are coming</p> -->
+                  </div>
+            </div>
+      </div>
+
+
+      <div>
+            <form action="/guests/<%=guest._id%>?_method=PUT" method="POST" novalidate class="needs-validation">
+                  <div class="container-fluid" id="show_family_list">
+                        <div class="family_list">
+                              <!-- First Guest Name Up Front -->
+                              <div class="row ">
+                                    <div class="col guset_name">
+                                          <p>
+                                                <%= guest.firstName%>
+                                                      <%= guest.lastName%>
+                                          </p>
+                                    </div>
+                                    <div class="col-sm-auto accept_decline">
+                                          <div id="col-sm-auto">
+                                                <input type="radio" class="form-check-input"
+                                                      name="guest[<%=guest._id%>]" value="accept" required>
+                                                <label for="accept" id="accept" class="form-check-label">Accept</label>
+                                          </div>
+                                    </div>
+                                    <div class="col-sm-auto accept_decline">
+                                          <div id="col-sm-auto">
+                                                <input type="radio" class="form-check-input"
+                                                      name="guest[<%=guest._id%>]" value="decline" required>
+                                                <label for="decline" class="form-check-label">Decline</label>
+                                                <div class="invalid-feedback">Required</div>
+                                          </div>
+                                    </div>
+                                    <hr id="family_list_hr">
+                              </div>
+                              <!-- For Loop for All Other Guests -->
+                              <% for (let familyMember of guests) { %>
+                                    <% if(guest.family===familyMember.family && familyMember.firstName
+                                          !==guest.firstName && familyMember.accept !==true ) { %>
+                                          <div class="row ">
+                                                <div class="col guset_name">
+                                                      <div>
+                                                            <%= familyMember.firstName%>
+                                                                  <%= familyMember.lastName%>
+                                                      </div>
+                                                </div>
+                                                <div class="col-sm-auto accept_decline">
+                                                      <div id="radio_button">
+                                                            <input type="radio" name="guest[<%=familyMember._id%>]"
+                                                                  value="accept" class="form-check-input">
+                                                            <label for="accept">Accept</label>
+                                                      </div>
+                                                </div>
+                                                <div class="col-sm-auto accept_decline">
+                                                      <div id="radio_button">
+                                                            <input type="radio" name="guest[<%=familyMember._id%>]"
+                                                                  value="decline" class="form-check-input">
+                                                            <label for="decline">Decline</label>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                          <hr id="family_list_hr">
+                                          <% } else if (guest.family===familyMember.family &&
+                                                familyMember.accept===true) {%>
+                                                <div class="row">
+                                                      <div class="col guset_name">
+                                                            <div>
+                                                                  <%= familyMember.firstName%>
+                                                                        <%= familyMember.lastName%>
+                                                            </div>
+                                                      </div>
+                                                      <div class="col-sm-auto accept_decline">
+                                                            <div>
+                                                                  <div>*Acepted*</div>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                                <hr id="family_list_hr">
+                                                <% } }%>
+                                                      <div class="input-group mb-3">
+                                                            <span class="input-group-text" id="basic-addon3">Song
+                                                                  request</span>
+                                                            <input type="text" class="form-control" id="basic-url"
+                                                                  aria-describedby="basic-addon3"
+                                                                  placeholder="e.g. Never Gonna Give You Up - Rick Astley"
+                                                                  name="guest[song_request]" maxlength="75">
+                                                      </div>
+                                                      <div class="text-center" id="show_family_list">
+                                                            <div>
+                                                                  <button class="btn btn-dark"
+                                                                        id="rsvp_button">RSVP</button>
+                                                            </div>
+                                                      </div>
+                        </div>
+                  </div>
+            </form>
+      </div>
+
+      <script>
+            (function () {
+                  'use strict'
+                  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                  var forms = document.querySelectorAll('.needs-validation')
+
+                  // Loop over them and prevent submission
+                  Array.prototype.slice.call(forms)
+                        .forEach(function (form) {
+                              form.addEventListener('submit', function (event) {
+                                    if (!form.checkValidity()) {
+                                          event.preventDefault()
+                                          event.stopPropagation()
+                                    }
+
+                                    form.classList.add('was-validated')
+                              }, false)
+                        })
+            })()</script>
