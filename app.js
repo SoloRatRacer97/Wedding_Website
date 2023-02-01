@@ -4,14 +4,16 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const Guest = require("./models/guests");
-const guestRoutes = require("./routes/guests");
 const ejsMate = require("ejs-mate");
 const passport = require("passport");
+const flash = require('connect-flash')
 const LocalStrategy = require("passport-local");
 const session = require("express-session");
-const flash = require("connect-flash");
 const User = require("./models/user");
 const { register } = require("./models/user");
+
+const userRoutes = require("./routes/users");
+const guestRoutes = require("./routes/guests");
 
 mongoose.connect("mongodb://localhost:27017/weddingAttendees");
 
@@ -45,6 +47,7 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
+app.use(flash())
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -165,6 +168,15 @@ app.get("/bridal_party", async (req, res) => {
 
 app.get("/photos", async (req, res) => {
   res.render("photos");
+});
+
+app.get("/login", async (req, res) => {
+  res.render("login");
+});
+
+app.post("/login", passport.authenticate('local', { failureFlash: true, failureRedirect: '/login'}), (req, res) => {
+  req.flash('success', 'welcome back!')
+  res.redirect('/')
 });
 
 app.listen(3000, () => {
