@@ -57,7 +57,7 @@ module.exports.fName = [
   "Brayden",
   "Harper",
   "Lori",
-  "James"
+  "James",
 ];
 
 module.exports.lName = [
@@ -65,8 +65,8 @@ module.exports.lName = [
   "Anderson",
   "Anderson",
   "Reardon",
-  "Mier",
-  "Mier",
+  "Meier",
+  "Meier",
   "Wald",
   "Wald",
   "Wald",
@@ -127,8 +127,8 @@ module.exports.family = [
   "Anderson",
   "Anderson",
   "Anderson",
-  "Mier",
-  "Mier",
+  "Meier",
+  "Meier",
   "Wald",
   "Wald",
   "Wald",
