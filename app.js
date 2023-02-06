@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 const Guest = require("./models/guests");
 const ejsMate = require("ejs-mate");
 const passport = require("passport");
-const flash = require('connect-flash')
+const flash = require("connect-flash");
 const LocalStrategy = require("passport-local");
 const session = require("express-session");
 const User = require("./models/user");
@@ -47,7 +47,7 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
-app.use(flash())
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -77,6 +77,9 @@ app.get("/songs", async (req, res) => {
 });
 
 app.get("/guests/new", (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect("/login");
+  }
   res.render("guests/new");
 });
 
@@ -162,9 +165,10 @@ app.get("/registry", async (req, res) => {
   res.render("registry");
 });
 
-app.get("/bridal_party", async (req, res) => {
-  res.render("bridal_party");
-});
+// Bridal party page no longer needed
+// app.get("/bridal_party", async (req, res) => {
+//   res.render("bridal_party");
+// });
 
 app.get("/photos", async (req, res) => {
   res.render("photos");
@@ -174,10 +178,14 @@ app.get("/login", async (req, res) => {
   res.render("login");
 });
 
-app.post("/login", passport.authenticate('local', { failureFlash: true, failureRedirect: '/login'}), (req, res) => {
-  req.flash('success', 'welcome back!')
-  res.redirect('/')
-});
+app.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/login" }),
+  (req, res) => {
+    req.flash("success", "welcome back!");
+    res.redirect("/");
+  }
+);
 
 app.listen(3000, () => {
   console.log("Serving on port 3000");
