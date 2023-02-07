@@ -15,7 +15,7 @@
       <div>
 
             <% for (let guest of Object.entries(guests)) { %>
-                  <% if (guest[1].song_request !=="N/A" && guest[1].song_request !== '') { %>
+                  <% if (guest[1].song_request !=="N/A" && guest[1].song_request !== '' &&  guest[1].accept) { %>
                         <div>
                               <li class="main_family_list_item">
                                     <%= guest[1].firstName %>
@@ -24,5 +24,6 @@
 
                               </li>
                         </div>
+                        <% console.log(guest);%>
                         <% }} %>
       </div>

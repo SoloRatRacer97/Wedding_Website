@@ -34,7 +34,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 // router seems to not like guests.. but it works fine without it??
-app.use("/guests", guestRoutes);
+
+
 
 const sessionConfig = {
   secret: "thisshouldbeabettersecret",
@@ -61,9 +62,10 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user
   next();
 })
+app.use("/guests", guestRoutes);
 
 app.get("/", async (req, res) => {
-  res.render("home");
+  res.redirect("/home");
 });
 
 app.get("/fakeUser", async (req, res) => {
@@ -75,10 +77,9 @@ app.get("/fakeUser", async (req, res) => {
 app.get("/guests", async (req, res) => {
   const guests = await Guest.find({});
   res.render("guests/index", { guests });
-  console.log(guests);
 });
 
-app.get("/songs", async (req, res) => {
+app.get("/songs", isLoggedIn, async (req, res) => {
   const guests = await Guest.find({});
   res.render("guests/songs", { guests });
 });
@@ -90,7 +91,7 @@ app.get("/guests/new", isLoggedIn, (req, res) => {
 app.post("/guests", isLoggedIn, async (req, res) => {
   const guest = new Guest(req.body.guest);
   await guest.save();
-  res.redirect("/guests/new");
+  res.redirect("/guests");
 });
 
 app.get("/guests/edit", isLoggedIn, async (req, res) => {
@@ -137,6 +138,7 @@ app.put("/guests/:id", async (req, res) => {
       guest.decline = true;
       guest.accept = false;
       guest.pending = false;
+      guest.song_request = "N/A";
       await Guest.findByIdAndUpdate(currentId, { ...guest });
     }
   }
