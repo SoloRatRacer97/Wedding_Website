@@ -190,6 +190,13 @@ app.post(
   }
 );
 
+app.get('/logout', (req, res) => {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+})
+
 app.listen(3000, () => {
   console.log("Serving on port 3000");
 });
