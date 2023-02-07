@@ -16,6 +16,11 @@
   }
 }
 
+::-webkit-scrollbar { 
+  width: 0px; 
+  background: transparent; 
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -53,7 +58,23 @@ body {
 .navbar {
   font-family: "Roboto", sans-serif;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  padding: 0.15rem 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 1rem;
+  border-bottom: 0.15rem solid transparent;
+}
+
+.nav-link:hover{
+  border-bottom-color:rgb(78, 78, 78);
+}
+
+.nav-link.active {
+  border-bottom-color:rgb(78, 78, 78);
 }
 
 .family_list {
@@ -76,8 +97,8 @@ body {
 #rsvp_button {
   margin-top: 2%;
   margin-bottom: 2%;
-  /* margin-left: 45%; */
 }
+
 .main_family_list_item {
   font-family: "Roboto", sans-serif;
   border: 1px solid rgba(129, 129, 129, 0.5);
@@ -100,7 +121,6 @@ body {
 }
 
 #family_list_div {
-  /* border: 1px solid rgb(16, 192, 25); */
   justify-content: center;
   justify-items: center;
   width: 50%;
@@ -152,7 +172,6 @@ body {
 }
 
 .collapse {
-  /* background-color: black; */
   justify-content: center;
 }
 
@@ -197,12 +216,17 @@ input[type="checkbox"] {
 
 #hero_image {
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
   max-width: 100%;
   background: center / cover no-repeat;
   background-attachment: fixed;
   background-image: url('../assets/HeroImage.jpg');
   position: relative;
+}
+
+#story_image {
+  width: 350px;
+  height: 350px;
 }
 
 #hero-text {
@@ -212,19 +236,50 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 70vh;
+  height: 90vh;
 }
 
 #hero-text h1 {
   text-transform: capitalize;
-  font-size: calc(2rem + 0.9vw);
+  font-size: calc(3rem + 0.9vw);
   color: hsl(216, 33%, 97%);
 }
+
+#hero-text h4 {
+  text-transform: capitalize;
+  font-size: calc(1rem + 0.9vw);
+  color: hsl(216, 33%, 97%);
+}
+
+#hero-text p {
+  text-transform: capitalize;
+  color: hsl(216, 33%, 97%);
+}
+
+#hero-text a {
+  text-decoration: none;
+  color: hsl(0, 0%, 0%);
+}
+
+#hero-text button {
+  color: #000000;
+  background-color: #ffffff;
+  font-size: 19px;
+  padding: 16px 50px;
+  cursor: pointer;
+  transition: 214ms ease-in-out;
+  border: none;
+}
+#hero-text button:hover {
+  color: #000000;
+  background-color: rgb(156, 156, 156);
+}
+
 #overlay {
   background: #000;
   width: 100%;
   height: 100%;
-  opacity: 0.4;
+  opacity: 0.35;
   position: absolute;
   top: 0;
 }
@@ -235,4 +290,10 @@ input[type="checkbox"] {
 
 #home-image-01 {
   background-image: url('../assets/HomePage01.jpg');
+}
+
+.todd_and_sarah {
+  justify-content: flex-start;
+  color: rgb(255, 0, 234);
+  margin: 0;
 }
