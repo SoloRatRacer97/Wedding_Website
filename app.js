@@ -116,6 +116,10 @@ app.get("/home", (req, res) => {
   res.render("home");
 });
 
+app.get("/thankyou", (req, res) => {
+  res.render("thankyou");
+});
+
 app.get("/guests/:id/decision", async (req, res) => {
   const guest = await Guest.findById(req.params.id);
   const guests = await Guest.find({});
@@ -133,6 +137,7 @@ app.put("/guests/:id", async (req, res) => {
       guest.accept = true;
       guest.decline = false;
       guest.pending = false;
+      res.redirect(`/thankyou`);
       await Guest.findByIdAndUpdate(currentId, { ...guest });
     } else if (decision === "decline") {
       guest.decline = true;
@@ -140,12 +145,10 @@ app.put("/guests/:id", async (req, res) => {
       guest.pending = false;
       guest.song_request = "N/A";
       await Guest.findByIdAndUpdate(currentId, { ...guest });
+      res.redirect(`/`);
     }
   }
-
   await Guest.findByIdAndUpdate(id, { ...req.body.guest });
-  res.redirect(`/guests`);
-  // console.log(req.body);
 });
 
 app.put("/guests/:id", async (req, res) => {
