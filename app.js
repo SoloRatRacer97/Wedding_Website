@@ -11,6 +11,7 @@ const LocalStrategy = require("passport-local");
 const session = require("express-session");
 const User = require("./models/user");
 const { register } = require("./models/user");
+const { isLoggedIn } = require("./middleware");
 
 const userRoutes = require("./routes/users");
 const guestRoutes = require("./routes/guests");
@@ -55,6 +56,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// This is where we can set global variables for our app
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user
+  next();
+})
+
 app.get("/", async (req, res) => {
   res.render("home");
 });
@@ -76,20 +83,17 @@ app.get("/songs", async (req, res) => {
   res.render("guests/songs", { guests });
 });
 
-app.get("/guests/new", (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.redirect("/login");
-  }
+app.get("/guests/new", isLoggedIn, (req, res) => {
   res.render("guests/new");
 });
 
-app.post("/guests", async (req, res) => {
+app.post("/guests", isLoggedIn, async (req, res) => {
   const guest = new Guest(req.body.guest);
   await guest.save();
   res.redirect("/guests/new");
 });
 
-app.get("/guests/edit", async (req, res) => {
+app.get("/guests/edit", isLoggedIn, async (req, res) => {
   const guests = await Guest.find({});
   res.render("guests/edit", { guests });
 });
@@ -100,17 +104,11 @@ app.get("/guests/:id/guest_edit", async (req, res) => {
   res.render("guests/guest_edit", { guest, guests });
 });
 
-app.put("/guests/guest_edit/:id", async (req, res) => {
+app.put("/guests/guest_edit/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const guest = await Guest.findById(id);
   await Guest.findByIdAndUpdate(id, { ...req.body.guest });
   res.redirect("/guests/edit");
-});
-
-app.post("/guests", async (req, res) => {
-  const guest = new Guest(req.body.guest);
-  await guest.save();
-  res.redirect(`/guests`);
 });
 
 app.get("/home", (req, res) => {
@@ -155,7 +153,7 @@ app.put("/guests/:id", async (req, res) => {
   res.redirect("/guests/edit");
 });
 
-app.delete("/guests/:id", async (req, res) => {
+app.delete("/guests/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   await Guest.findByIdAndDelete(id);
   res.redirect("/guests/edit");

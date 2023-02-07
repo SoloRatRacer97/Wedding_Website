@@ -34,9 +34,11 @@
                         <a class="nav-link" href="/photos">Info</a>
                         <a class="nav-link" href="/registry">Registry</a>
                         <!-- No longer needed => <a class="nav-link" href="/bridal_party">Bridal Party</a> -->
-                        <a class="nav-link" href="/guests/edit">Edit guests</a>
-                        <a class="nav-link" href="/guests/new">Add guests</a>
-                        <a class="nav-link" href="/songs">Songs</a>
+                        <% if (currentUser) { %>
+                              <a class="nav-link" href="/guests/edit">Edit guests</a>
+                              <a class="nav-link" href="/guests/new">Add guests</a>
+                              <a class="nav-link" href="/songs">Songs</a>
+                        <% } %>
                   </div>
             </div>
       </div>
