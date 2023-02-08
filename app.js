@@ -12,10 +12,13 @@ const session = require("express-session");
 const User = require("./models/user");
 const { register } = require("./models/user");
 const { isLoggedIn } = require("./middleware");
+const dotenv = require('dotenv').config();
 
 const userRoutes = require("./routes/users");
 const guestRoutes = require("./routes/guests");
+const dbUrl = process.env.DB_URL
 
+//"mongodb://localhost:27017/weddingAttendees"
 mongoose.connect("mongodb://localhost:27017/weddingAttendees");
 
 const db = mongoose.connection;
