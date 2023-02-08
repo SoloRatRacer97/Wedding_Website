@@ -12,13 +12,12 @@
     min-width: 100%;
   }
   #hero_image {
-    
   }
 }
 
-::-webkit-scrollbar { 
-  width: 0px; 
-  background: transparent; 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 * {
@@ -69,12 +68,12 @@ body {
   border-bottom: 0.15rem solid transparent;
 }
 
-.nav-link:hover{
-  border-bottom-color:rgb(78, 78, 78);
+.nav-link:hover {
+  border-bottom-color: rgb(78, 78, 78);
 }
 
 .nav-link.active {
-  border-bottom-color:rgb(78, 78, 78);
+  border-bottom-color: rgb(78, 78, 78);
 }
 
 .family_list {
@@ -220,7 +219,7 @@ input[type="checkbox"] {
   max-width: 100%;
   background: center / cover no-repeat;
   background-attachment: fixed;
-  background-image: url('../assets/HeroImage.jpg');
+  background-image: url("../assets/HeroImage.jpg");
   position: relative;
 }
 
@@ -289,11 +288,30 @@ input[type="checkbox"] {
 }
 
 #home-image-01 {
-  background-image: url('../assets/HomePage01.jpg');
+  background-image: url("../assets/HomePage01.jpg");
 }
 
 .todd_and_sarah {
   justify-content: flex-start;
   color: rgb(255, 0, 234);
   margin: 0;
+}
+
+.information {
+  background-color: rgb(219, 219, 219);
+}
+
+#family_image {
+  width: 100vw;
+  height: 50vh;
+  max-width: 100%;
+  background: center / cover no-repeat;
+  background-image: url("../assets/InfoPage02.jpg");
+  position: relative;
+}
+
+#pokemon {
+  padding-top: 85.581%;
+  position: relative;
+  justify-content: center;
 }

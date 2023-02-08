@@ -1,38 +1,61 @@
 <% layout('../views/guests/layouts/boilerplate') %>
-      
+
 
       <div>
             <div id="family_image">
-                  <div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white"
-                        style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp'); height: 200px;">
-                        <h1 class="mb-3 h2">Todd Anderson & Sarah Wald</h1>
+                  <div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white">
                   </div>
             </div>
             <div class="container text-center" id="family_list_div">
                   <div id="rsvp_lettering">
-                        <h1>~ RSVP ~</h1>
-                        <p>To RSVP, search for your name and confirm your attendance.</p>
+                        <br>
+                        <span>
+                              <h1>Let us know whos</h1>
+                        </span>
+                        <span>
+                              <h1>
+                                    coming!
+                              </h1>
+                        </span>
                         <hr>
-                        <!-- Making this a GET request makes this into a req.query and not a req.body. This 
-                  makes it so that we can search for it with a query string -->
-                        <form action="/guests" method="GET">
-                              <div id="search_form">
-                                    <input type="text" name="search1" placeholder="First Name" id="search_bar">
-                                    <input type="text" name="search2" placeholder="Last Name" id="search_bar">
-                                    <br>
-                                    <div class="no_search_buttons">
-                                          <button type="submit" value="Search" class=" btn btn-dark" id="search_button">Search</button>
-                                    <% function noGuestss() { %>
-                                          <h5 id="no_guests_match">No guests match that search, please try
-                                                again. </h5>
-                                    <% } %>
+                        <div class="container">
+                              <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                          <h5>Please search for your name and confirm your attenance</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                          <form action="/guests" method="GET">
+                                                <div class="row gx-1">
+                                                      <div class="col-lg-4 col-md-12">
+                                                            <input type="text" name="search1" placeholder="First Name"
+                                                                  id="search_bar">
+                                                      </div>
+                                                      <div class="col-lg-4 col-md-6">
+                                                            <input type="text" name="search2" placeholder="Last Name"
+                                                                  id="search_bar">
+                                                      </div>
+                                                      <div class="col-lg-4 col-md-6">
+                                                            <div>
+                                                                  <button type="submit" value="Search"
+                                                                        class=" btn btn-dark"
+                                                                        id="search_button">></button>
+                                                                  <% function noGuestss() { %>
+                                                                        <h5 id="no_guests_match">No guests match that
+                                                                              search, please
+                                                                              try
+                                                                              again. </h5>
+                                                                        <% } %>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </form>
                                     </div>
                               </div>
-                        </form>
+                        </div>
                   </div>
             </div>
       </div>
-      <section class="p-1" >
+      <section class="p-1">
             <!-- Container as usual...-->
             <div class="container">
                   <!-- Making a row for the three boxes -->
@@ -48,10 +71,11 @@
                                           <% if(guest[1].pending===true) { %>
                                                 <div class="list_item">
                                                       <li class="main_family_list_item"><a
-                                                            href="/guests/<%= guest[1]._id %>/decision" class="guest_link">
+                                                                  href="/guests/<%= guest[1]._id %>/decision"
+                                                                  class="guest_link">
                                                                   <%= guest[1].firstName %>
                                                                         <%= guest[1].lastName %>
-                                                                  </a></li>
+                                                            </a></li>
                                                 </div>
                                                 <% } else if (guest[1].accept===true){ %>
                                                       <!-- Make this look ghosted and have something saying they accepted or declined -->
@@ -67,9 +91,19 @@
                                                             <% }%>
                                                                   <% if(guests.length < 1) { %>
                                                                         <% noGuestss() %>
-                                                                              <div class="tenor-gif-embed" data-postid="5762800" data-share-method="host" data-aspect-ratio="1.33155" data-width="90%"><a href="https://tenor.com/view/pokemon-confused-psyduck-gif-5762800">Pokemon Confused GIF</a>from <a href="https://tenor.com/search/pokemon-gifs">Pokemon GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-                                                                              
-                                                                        <% } %>
+                                                                              <div class="tenor-gif-embed"
+                                                                                    data-postid="5762800"
+                                                                                    data-share-method="host"
+                                                                                    data-aspect-ratio="1.33155"
+                                                                                    data-width="90%"><a
+                                                                                          href="https://tenor.com/view/pokemon-confused-psyduck-gif-5762800">Pokemon
+                                                                                          Confused GIF</a>from <a
+                                                                                          href="https://tenor.com/search/pokemon-gifs">Pokemon
+                                                                                          GIFs</a></div>
+                                                                              <script type="text/javascript" async
+                                                                                    src="https://tenor.com/embed.js"></script>
+
+                                                                              <% } %>
                               </ul>
                         </div>
                   </div>
