@@ -19,7 +19,7 @@ const userRoutes = require("./routes/users");
 const guestRoutes = require("./routes/guests");
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/weddingAttendees";
-const secret = proceess.env.SECRET || 'thisshouldbeabettersecret'
+const secret = process.env.SECRET || 'thisshouldbeabettersecret'
 
 //"mongodb://localhost:27017/weddingAttendees"
 mongoose.connect(dbUrl);
@@ -214,6 +214,8 @@ app.get('/logout', (req, res) => {
   });
 })
 
-app.listen(3000, () => {
-  console.log("Serving on port 3000");
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+  console.log(`Serving on port ${port}`);
 });
