@@ -13,13 +13,14 @@ const User = require("./models/user");
 const { register } = require("./models/user");
 const { isLoggedIn } = require("./middleware");
 const dotenv = require('dotenv').config();
+const MongoStore = require('connect-mongo');
 
 const userRoutes = require("./routes/users");
 const guestRoutes = require("./routes/guests");
 const dbUrl = process.env.DB_URL
 
 //"mongodb://localhost:27017/weddingAttendees"
-mongoose.connect("mongodb://localhost:27017/weddingAttendees");
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -38,9 +39,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 // router seems to not like guests.. but it works fine without it??
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+      secret: 'thisshouldbeabettersecret'
+  }
+});
 
+store.on('error', function (e) {
+  console.log('SESSION STORE ERROR', e);
+})
 
 const sessionConfig = {
+  store,
   secret: "thisshouldbeabettersecret",
   resave: false,
   saveUninitialized: true,
@@ -74,6 +86,7 @@ app.get("/", async (req, res) => {
 app.get("/fakeUser", async (req, res) => {
   const user = new User({ email: "test@test.com", username: "test" });
   const newUser = await User.register(user, "Pa$$w0rd");
+// Need to add in code to check for the user first and only send it if it does not exist so a bad actor does not send a bunch of new users to the server from postman.
   res.send(newUser);
 });
 
@@ -186,9 +199,8 @@ app.get("/login", async (req, res) => {
 
 app.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/login" }),
+  passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }),
   (req, res) => {
-    req.flash("success", "welcome back!");
     res.redirect("/");
   }
 );
