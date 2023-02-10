@@ -239,18 +239,21 @@ input[type="checkbox"] {
 }
 
 #hero-text h1 {
+  font-family: 'Playfair Display', serif;
   text-transform: capitalize;
-  font-size: calc(3rem + 0.9vw);
+  font-size: calc(3.5rem + 1.4vw);
   color: hsl(216, 33%, 97%);
 }
 
 #hero-text h4 {
+  font-family: 'Playfair Display', serif;
   text-transform: capitalize;
   font-size: calc(1rem + 0.9vw);
   color: hsl(216, 33%, 97%);
 }
 
 #hero-text p {
+  font-family: 'Playfair Display', serif;
   text-transform: capitalize;
   color: hsl(216, 33%, 97%);
 }
@@ -317,25 +320,41 @@ input[type="checkbox"] {
 }
 
 #infoVecotrImage_calendar{
-  width: 4.5vw;
-  height: 7.9vh;
-  margin-bottom: 10px;
+  width: 85px;
+  height: 70px;
+  margin-bottom: 15px;
 }
 
 #infoVecotrImage_venue{
-  width: 4.5vw;
-  height: 7.9vh;
+  width: 85px;
+  height: 80px;
   margin-bottom: 15px;
   margin-top: -5px;
 }
 
 #infoVecotrImage_location{
-  width: 4vw;
-  height: 8.5vh;
-  margin-bottom: 15px;
+  width: 65px;
+  height: 70px;
+  margin-bottom: 20px;
   margin-top: -5px;
 }
 
 #infoReceptionDetails {
   height: 30vh;
+}
+
+#heroText {
+  font-family: 'Playfair Display', serif;
+  font-size: 200px;
+}
+
+#infoHeroText {
+  font-family: 'Playfair Display', serif;
+  text-transform: capitalize;
+  font-size: calc(1rem + 1.4vw);
+  color: hsl(0, 0%, 0%);
+}
+
+#infoHr {
+  max-width: 30vw;
 }
