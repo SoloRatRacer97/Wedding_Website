@@ -183,7 +183,7 @@ app.delete("/guests/:id", isLoggedIn, async (req, res) => {
 });
 
 app.get("/registry", async (req, res) => {
-  res.render("registry");
+  res.render("info");
 });
 
 // Bridal party page no longer needed
@@ -191,8 +191,8 @@ app.get("/registry", async (req, res) => {
 //   res.render("bridal_party");
 // });
 
-app.get("/photos", async (req, res) => {
-  res.render("photos");
+app.get("/info", async (req, res) => {
+  res.render("info");
 });
 
 app.get("/login", async (req, res) => {

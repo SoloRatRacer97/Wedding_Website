@@ -294,17 +294,28 @@ input[type="checkbox"] {
   background-image: url("../assets/HomePage01.jpg");
 }
 
-.todd_and_sarah {
+#todd_and_sarah {
   justify-content: flex-start;
-  color: rgb(255, 0, 234);
-  margin: 0;
+  font-family: 'Playfair Display', serif;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-weight: bold;
 }
 
 .information {
   background-color: rgb(219, 219, 219);
 }
 
-#family_image {
+#registryImage {
+  width: 100vw;
+  height: 50vh;
+  max-width: 100%;
+  background: center / cover no-repeat;
+  background-image: url("../assets/RegistryHero.jpg");
+  position: relative;
+}
+
+#RSVPImage {
   width: 100vw;
   height: 50vh;
   max-width: 100%;
@@ -355,6 +366,13 @@ input[type="checkbox"] {
   color: hsl(0, 0%, 0%);
 }
 
+#ralenPhotography {
+  font-family: 'Playfair Display', serif;
+  text-transform: capitalize;
+  font-size: calc(1rem + 1.1vw);
+  color: hsl(0, 0%, 0%);
+}
+
 #infoHr {
   max-width: 30vw;
 }
@@ -362,4 +380,20 @@ input[type="checkbox"] {
 #italisized {
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
+}
+
+#ralenunformattedLink {
+  text-decoration: none;
+  color: #000;
+  font-family: 'Playfair Display', serif;
+  text-transform: capitalize;
+  font-size: calc(1rem + 1.1vw);
+  color: hsl(0, 0%, 0%);
+}
+#unformattedLink:hover {
+  text-decoration: none;
+  color: #000;
+}
+.navbar-toggler {
+  margin: 10px;
 }
