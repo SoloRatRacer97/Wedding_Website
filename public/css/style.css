@@ -358,3 +358,8 @@ input[type="checkbox"] {
 #infoHr {
   max-width: 30vw;
 }
+
+#italisized {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+}
