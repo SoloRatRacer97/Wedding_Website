@@ -331,15 +331,26 @@ input[type="checkbox"] {
 }
 
 #infoVecotrImage_calendar{
-  width: 85px;
-  height: 70px;
+  width: 5em;
+  height: 4.375em;
   margin-bottom: 15px;
 }
 
-#infoVecotrImage_venue{
-  width: 85px;
-  height: 80px;
-  margin-bottom: 15px;
+#calendarDescription{
+  padding-bottom: 2em;
+}
+
+#infoVecotrImageVenue{
+  width: 5.5em;
+  height: 5em;
+  margin-bottom: 1em;
+  margin-top: -5px;
+}
+
+#infoVecotrImageCamera{
+  width: 7em;
+  height: 5em;
+  margin-bottom: 1em;
   margin-top: -5px;
 }
 
@@ -351,7 +362,7 @@ input[type="checkbox"] {
 }
 
 #infoReceptionDetails {
-  height: 30vh;
+  display: inline;
 }
 
 #heroText {
@@ -362,7 +373,7 @@ input[type="checkbox"] {
 #infoHeroText {
   font-family: 'Playfair Display', serif;
   text-transform: capitalize;
-  font-size: calc(1rem + 1.4vw);
+  font-size: 2.5em;
   color: hsl(0, 0%, 0%);
 }
 
@@ -380,6 +391,7 @@ input[type="checkbox"] {
 #italisized {
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
+  margin-top: 1em;
 }
 
 #ralenunformattedLink {
