@@ -163,6 +163,8 @@ body {
 
 .footer {
   font-family: "Roboto", sans-serif;
+  bottom: 0;
+  width: 100%;
 }
 
 .we_are {
@@ -263,7 +265,7 @@ input[type="checkbox"] {
   color: hsl(0, 0%, 0%);
 }
 
-#hero-text button {
+button {
   color: #000000;
   background-color: #ffffff;
   font-size: 19px;
@@ -272,7 +274,7 @@ input[type="checkbox"] {
   transition: 214ms ease-in-out;
   border: none;
 }
-#hero-text button:hover {
+button:hover {
   color: #000000;
   background-color: rgb(156, 156, 156);
 }
@@ -345,6 +347,8 @@ input[type="checkbox"] {
   height: 5em;
   margin-bottom: 1em;
   margin-top: -5px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #infoVecotrImageCamera{
@@ -408,4 +412,52 @@ input[type="checkbox"] {
 }
 .navbar-toggler {
   margin: 10px;
+}
+
+#ThankYouHr {
+  max-width: 8em;
+  margin-top: 0;
+}
+
+#thankYouText{
+  margin-bottom: 2em;
+}
+
+#thankYouHoneymoonText{
+  margin-bottom: 0em;
+  margin-top: 1em;
+  max-width: 25em;
+}
+
+#registryDetails01 {
+  display: inline;
+}
+#registryDetails02 {
+  display: inline;
+  padding-top: 20em;
+}
+
+#registryDetails02Padding {
+  padding-top: 1em;
+}
+
+#thankYouHoneyMoonTitle{
+  margin-top: 1em;
+}
+
+#registryButtons{
+  background-color: rgb(219, 219, 219);
+  max-width: 8em;
+  padding: 2;
+  margin: 1em;
+}
+
+#registryButtons:hover{
+  background-color: rgba(100, 219, 104, 0.336);
+}
+
+#registryButtonContainers{
+  padding: 0;
+  margin: -1em;
+  margin-top: 3em;
 }

@@ -4,10 +4,11 @@ const { fName, lName, family } = require("./seedHelpers");
 
 const mongoose = require("mongoose");
 const Guests = require("../models/guests");
-
+const dotenv = require('dotenv').config();
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/weddingAttendees";
 
 //WeddingAttendee
-mongoose.connect("mongodb://localhost:27017/weddingAttendees");
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
