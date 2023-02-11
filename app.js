@@ -183,7 +183,7 @@ app.delete("/guests/:id", isLoggedIn, async (req, res) => {
 });
 
 app.get("/registry", async (req, res) => {
-  res.render("info");
+  res.render("registry");
 });
 
 // Bridal party page no longer needed
