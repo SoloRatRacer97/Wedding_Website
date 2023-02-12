@@ -11,13 +11,15 @@
   #family_list {
     min-width: 100%;
   }
-  #hero_image {
+  #infoHr {
+    width: 70vw;
   }
 }
 
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
+  display: none;
 }
 
 * {
@@ -306,6 +308,8 @@ button:hover {
 
 .information {
   background-color: rgb(219, 219, 219);
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 #registryImage {
@@ -389,7 +393,7 @@ button:hover {
 }
 
 #infoHr {
-  max-width: 30vw;
+  width: 30vw;
 }
 
 #italisized {
@@ -439,6 +443,7 @@ button:hover {
 
 #registryDetails02Padding {
   padding-top: 1em;
+  padding-bottom: 2em;
 }
 
 #thankYouHoneyMoonTitle{
@@ -460,4 +465,20 @@ button:hover {
   padding: 0;
   margin: -1em;
   margin-top: 3em;
+}
+
+#venueIconSet{
+  margin-top: 2em;
+}
+
+#infoVecotrImageQuestion{
+  width: 4.4em;
+  height: 4.375em;
+  margin-bottom: 1em;
+}
+
+#infoVecotrImageRegistry{
+  width: 4.4em;
+  height: 4.375em;
+  margin-bottom: 1em;
 }
