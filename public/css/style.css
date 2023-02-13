@@ -507,3 +507,8 @@ button:hover {
 #noPadding{
   padding: 0;
 }
+
+#rsvpHr{
+  margin-top: 1em;
+  max-width: 20em;
+}
