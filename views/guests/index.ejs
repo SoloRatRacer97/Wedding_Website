@@ -13,39 +13,38 @@
                               <h1>Let us know whos coming!</h1>
                         </span>
                         <hr>
-                        <div class="container text-center" id="noPadding">
-                              <div class="row justify-content-center" id="searchBarDiv">
-                                    <div class="col-md-12">
-                                          <h5>Please search for your name and confirm your attenance</h5>
-                                    </div>
-                                    <div class="col-md-6">
-                                          <form action="/guests" method="GET">
-                                                <div class="row gx-1">
-                                                      <div class="col-lg-4 col-md-12">
-                                                            <input type="text" name="search1" placeholder="First Name"
-                                                                  id="search_bar">
-                                                      </div>
-                                                      <div class="col-lg-4 col-md-12">
-                                                            <input type="text" name="search2" placeholder="Last Name"
-                                                                  id="search_bar">
-                                                      </div>
-                                                      <div class="col-lg-4 col-md-12">
-                                                                  <button type="submit" value="Search"
-                                                                        class=" btn btn-dark"
-                                                                        id="search_button">></button>
-                                                                  <% function noGuestss() { %>
-                                                                        <h5 id="no_guests_match">No guests match that
-                                                                              search, please
-                                                                              try
-                                                                              again. </h5>
-                                                                        <% } %>
-
-                                                      </div>
-                                                </div>
-                                          </form>
-                                    </div>
-                              </div>
+                        <div class="col-md-12">
+                              <h5>Please search for your name and confirm your attenance</h5>
                         </div>
+
+
+                        <div class="container justify-content-center">
+                              <form action="/guests" method="GET">
+                                    <div class="row">
+                                          <div class="col-lg-6 col-md-12 mt-2">
+                                                <input required type="text" name="search1" placeholder="First Name"
+                                                      id="search_bar">
+                                          </div>
+                                          <div class="col-lg-6 col-md-12 mt-2">
+                                                <input required type="text" name="search2" placeholder="Last Name"
+                                                      id="search_bar">
+                                          </div>
+
+                                          <div class="col-lg-12 col-md-12 mt-3">
+                                                <button type="submit" value="Search" class="btn btn-dark"
+                                                      id="search_button">Search</button>
+                                                <% function noGuestss() { %>
+                                                      <h5 id="no_guests_match">No guests match that
+                                                            search, please
+                                                            try
+                                                            again. </h5>
+                                                      <% } %>
+
+                                          </div>
+                                    </div>
+                              </form>
+                        </div>
+                        <hr>
                   </div>
             </div>
       </div>
