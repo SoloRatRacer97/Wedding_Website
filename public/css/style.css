@@ -418,7 +418,7 @@ button:hover {
 }
 
 #italisized {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-style: italic;
   margin-top: 1em;
 }
@@ -446,12 +446,6 @@ button:hover {
 
 #thankYouText{
   margin-bottom: 2em;
-}
-
-#thankYouHoneymoonText{
-  margin-bottom: 0em;
-  margin-top: 1em;
-  max-width: 25em;
 }
 
 #registryDetails01 {
@@ -520,4 +514,19 @@ button:hover {
   margin-left: 0;
   margin-right: 0;
   padding-bottom: 0.5em;
+}
+
+#shoeTie{
+  width: 20em;
+  height: 30em;
+}
+
+#targetDogVectorImage{
+  width: 9.2em;
+  height: 9em;
+}
+
+#ourStory{
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
 }
