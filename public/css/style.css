@@ -28,6 +28,9 @@
     margin-left: 5em;
     padding: 0;
   }
+  #hero_image{
+
+  }
 }
 
 ::-webkit-scrollbar {
@@ -465,14 +468,19 @@ button:hover {
   margin-top: 1em;
 }
 
-#registryButtons{
+#registryButtonsGrey{
   background-color: rgb(219, 219, 219);
   max-width: 8em;
-  padding: 2;
   margin: 1em;
 }
 
-#registryButtons:hover{
+#registryButtonsWhite{
+  background-color: rgb(255, 255, 255);
+  max-width: 8em;
+  margin: 1em;
+}
+
+#registryButtonsGrey:hover{
   background-color: rgba(100, 219, 104, 0.336);
 }
 
