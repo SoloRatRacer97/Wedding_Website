@@ -15,7 +15,6 @@
     width: 70vw;
   }
   #searchBarDiv{
-    background-color: aqua;
     margin-top: 1.5em;
   }
   #search_button {
@@ -29,7 +28,7 @@
     padding: 0;
   }
   #hero_image{
-
+    background-image: url("../assets/HeroImageTiny.JPG");
   }
 }
 
